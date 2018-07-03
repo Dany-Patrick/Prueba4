@@ -9,19 +9,6 @@
     tools:showIn="@layout/activity_main"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/ufTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Uf"
-        android:padding="16dp"
-        />
-    <TextView
-        android:id="@+id/dolarTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dolar"
-        android:padding="16dp"
-        />
+
 
 </LinearLayout>

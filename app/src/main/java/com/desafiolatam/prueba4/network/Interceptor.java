@@ -10,7 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Interceptor {
-    private static final String BASE_URL = "https://api-endpoint.igdb.com/games/";
+    private static final String BASE_URL = "https://api-endpoint.igdb.com/";
 
     public GetGame getBasic()
     {
