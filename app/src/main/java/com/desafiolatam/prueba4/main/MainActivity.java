@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             progressDialog.setTitle("You are infected!.");
             progressDialog.show();
 
+
         }
 
         @Override
