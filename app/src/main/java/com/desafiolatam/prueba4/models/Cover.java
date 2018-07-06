@@ -1,14 +1,11 @@
 package com.desafiolatam.prueba4.models;
 
-public class Cover {
+import java.io.Serializable;
 
-        private String height;
+public class Cover implements Serializable {
 
-        private String cloudinary_id;
+        private String height,cloudinary_id,width,url;
 
-        private String width;
-
-        private String url;
 
         public String getHeight ()
         {

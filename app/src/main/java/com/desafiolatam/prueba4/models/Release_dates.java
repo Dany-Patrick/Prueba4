@@ -1,18 +1,11 @@
 package com.desafiolatam.prueba4.models;
 
-public class Release_dates {
+import java.io.Serializable;
 
-        private String platform;
+public class Release_dates implements Serializable {
 
-        private String category;
+        private String platform,category,m,date,y,human;
 
-        private String m;
-
-        private String date;
-
-        private String y;
-
-        private String human;
 
         public String getPlatform ()
         {

@@ -5,17 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.desafiolatam.prueba4.R;
 import com.desafiolatam.prueba4.models.Game;
 import com.desafiolatam.prueba4.network.GetGameRandom;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String MAIN = "com.desafiolatam.prueba4.main.KEY.MAIN";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,16 +47,20 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(List<Game> games) {
-            if(games != null)
-            {
-                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                intent.putExtra(MAIN,games.get(0).getName().toString());
-                intent.putExtra("url","https:"+games.get(0).getCover().getUrl());
-                intent.putExtra("summary",games.get(0).getSummary());
-                startActivity(intent);
-                MainActivity.this.finish();
+            try {
+                if (games != null) {
+                    Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                    ArrayList<Game> arrayList = new ArrayList<>(games);
+                    intent.putParcelableArrayListExtra("ARRAY", arrayList);
+                    startActivity(intent);
+                    MainActivity.this.finish();
+                }
+                progressDialog.dismiss();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.d("CATCH", e.getMessage());
+
             }
-            progressDialog.dismiss();
         }
 
 

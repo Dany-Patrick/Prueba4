@@ -1,58 +1,59 @@
 package com.desafiolatam.prueba4.models;
 
-public class Game {
+import android.os.Parcel;
+import android.os.Parcelable;
 
-        private String summary;
+public class Game implements Parcelable {
 
-        private String[] publishers;
+        private String summary,aggregated_rating,id,total_rating,name,updated_at,created_at,popularity,aggregated_rating_count,first_release_date,url,category,total_rating_count,slug;
 
-        private String[] genres;
-
-        private String aggregated_rating;
-
-        private String[] platforms;
+        private String[] publishers,genres,platforms,tags,game_modes,games,keywords,developers,player_perspectives;
 
         private Release_dates[] release_dates;
 
-        private String id;
-
         private Cover cover;
 
-        private String total_rating;
+    protected Game(Parcel in) {
+        summary = in.readString();
+        aggregated_rating = in.readString();
+        id = in.readString();
+        total_rating = in.readString();
+        name = in.readString();
+        updated_at = in.readString();
+        created_at = in.readString();
+        popularity = in.readString();
+        aggregated_rating_count = in.readString();
+        first_release_date = in.readString();
+        url = in.readString();
+        category = in.readString();
+        total_rating_count = in.readString();
+        slug = in.readString();
+        publishers = in.createStringArray();
+        genres = in.createStringArray();
+        platforms = in.createStringArray();
+        tags = in.createStringArray();
+        game_modes = in.createStringArray();
+        games = in.createStringArray();
+        keywords = in.createStringArray();
+        developers = in.createStringArray();
+        player_perspectives = in.createStringArray();
+        cover = (Cover) in.readSerializable();
+        release_dates = (Release_dates[]) in.readSerializable();
+    }
 
-        private String name;
+    public static final Creator<Game> CREATOR = new Creator<Game>() {
+        @Override
+        public Game createFromParcel(Parcel in) {
+            return new Game(in);
+        }
 
-        private String created_at;
+        @Override
+        public Game[] newArray(int size) {
+            return new Game[size];
+        }
+    };
 
-        private String popularity;
-
-        private String[] tags;
-
-        private String[] game_modes;
-
-        private String[] games;
-
-        private String[] keywords;
-
-        private String aggregated_rating_count;
-
-        private String first_release_date;
-
-        private String[] developers;
-
-        private String url;
-
-        private String category;
-
-        private String updated_at;
-
-        private String[] player_perspectives;
-
-        private String total_rating_count;
-
-        private String slug;
-
-        public String getSummary ()
+    public String getSummary ()
         {
             return summary;
         }
@@ -303,6 +304,37 @@ public class Game {
         }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(summary);
+        dest.writeString(aggregated_rating);
+        dest.writeString(id);
+        dest.writeString(total_rating);
+        dest.writeString(name);
+        dest.writeString(updated_at);
+        dest.writeString(created_at);
+        dest.writeString(popularity);
+        dest.writeString(aggregated_rating_count);
+        dest.writeString(first_release_date);
+        dest.writeString(url);
+        dest.writeString(category);
+        dest.writeString(total_rating_count);
+        dest.writeString(slug);
+        dest.writeStringArray(publishers);
+        dest.writeStringArray(genres);
+        dest.writeStringArray(platforms);
+        dest.writeStringArray(tags);
+        dest.writeStringArray(game_modes);
+        dest.writeStringArray(games);
+        dest.writeStringArray(keywords);
+        dest.writeStringArray(developers);
+        dest.writeStringArray(player_perspectives);
+        dest.writeSerializable(cover);
+        dest.writeSerializable(release_dates);
+    }
 }

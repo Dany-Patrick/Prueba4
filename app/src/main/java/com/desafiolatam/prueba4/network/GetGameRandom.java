@@ -1,6 +1,7 @@
 package com.desafiolatam.prueba4.network;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.desafiolatam.prueba4.models.Game;
 
@@ -13,11 +14,12 @@ import retrofit2.Response;
 public class GetGameRandom  extends AsyncTask<Void, Void,List<Game>> {
         @Override
         protected List<Game> doInBackground(Void... voids) {
-            final List<Integer> numbers = Arrays.asList(19686, 880,974,424,1082,24869,847,15108,55163,19562,24369,968,966,969,970,977,978,7725,971);
+            final List<Integer> numbers = Arrays.asList(19686, 880,974,424,1082,24869,847,15108,19562,24369,968,966,969,970,977,978,7725,971,967);
 
             GetGame getGame = new Interceptor().getBasic();
-            int numberRandom = (int) (Math.random() *19) ;
+            int numberRandom = (int) (Math.random() *18) ;
             retrofit2.Call<List<Game>> gameCall = getGame.getDefault(numbers.get(numberRandom));
+            Log.d("RANDOM", String.valueOf(numberRandom));
 
             try {
                 Response<List<Game>> response = gameCall.execute();
